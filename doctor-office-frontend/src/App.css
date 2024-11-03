@@ -1,0 +1,43 @@
+/* App.css */
+body {
+  background-color: rgb(187, 250, 250); /* Light background color */
+}
+html {
+  background-color: teal;
+}
+
+h1 {
+  color: #007bff; /* Bootstrap primary color */
+}
+
+form {
+  border-radius: 10px;
+}
+
+input, select, button {
+  border-radius: 5px; /* Smooth rounded corners */
+}
+
+button:hover {
+  background-color: #28a745; /* Darker green on hover */
+}
+
+.card {
+  border-radius: 10px; /* Rounded corners for cards */
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  color: #6c757d;
+}
+
+/* Add shadow effect to cards */
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.custom-bg-color {
+  background-color: #d0d3d3; /* Replace with your desired color */
+}
