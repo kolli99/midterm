@@ -53,3 +53,5 @@ jobs:
           # Apply the updated Kubernetes configuration files
           kubectl apply -f ./backenddeploy.yml
           kubectl apply -f ./frontend.yml
+          echo "Backend Deploy Path: $(realpath backenddeploy.yml)"
+
