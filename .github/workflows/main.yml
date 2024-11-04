@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         
-      - name: List files for debugging
-        run: ls -al  # Lists all files and directories for debugging purposes
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -25,15 +22,18 @@ jobs:
       - name: Check for New Docker Images
         id: check_docker_images
         run: |
+          # Define image names
           IMAGE_BACKEND=hemanthkolli99/backend  # Replace with your Docker Hub username
           IMAGE_FRONTEND=hemanthkolli99/frontend  # Replace with your Docker Hub username
 
+          # Check for the latest tags
           TAG_BACKEND=$(curl -s "https://hub.docker.com/v2/repositories/${IMAGE_BACKEND}/tags?page_size=1" | jq -r '.results[0].name')
           TAG_FRONTEND=$(curl -s "https://hub.docker.com/v2/repositories/${IMAGE_FRONTEND}/tags?page_size=1" | jq -r '.results[0].name')
 
           echo "Latest backend tag is $TAG_BACKEND"
           echo "Latest frontend tag is $TAG_FRONTEND"
 
+          # Output latest tags (optional, if you want to keep this for reference)
           echo "latest_backend_tag=$TAG_BACKEND" >> $GITHUB_OUTPUT
           echo "latest_frontend_tag=$TAG_FRONTEND" >> $GITHUB_OUTPUT
 
@@ -51,5 +51,5 @@ jobs:
       - name: Deploy to EKS
         run: |
           # Apply the updated Kubernetes configuration files
-          kubectl apply -f backenddeploy.yml
-          kubectl apply -f frontend.yml
+          kubectl apply -f ./backenddeploy.yml
+          kubectl apply -f ./frontend.yml
