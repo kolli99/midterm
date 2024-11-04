@@ -53,5 +53,13 @@ jobs:
           # Apply the updated Kubernetes configuration files
           kubectl apply -f ./backenddeploy.yml
           kubectl apply -f ./frontend.yml
-          echo "Backend Deploy Path: $(realpath backenddeploy.yml)"
 
+      - name: Print Directory Contents
+        run: |
+          echo "Current directory: $(pwd)"
+          ls -l  # List the contents of the current directory
+
+      - name: Print Full Paths
+        run: |
+          echo "Backend Deploy Path: $(realpath backenddeploy.yml)"
+          echo "Frontend Deploy Path: $(realpath frontend.yml)"
